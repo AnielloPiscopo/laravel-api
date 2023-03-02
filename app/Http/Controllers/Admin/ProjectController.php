@@ -49,9 +49,9 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $numOfElementsToView = 10;
-        $orderCondtion = $request->orderCondtion ?? '';
-        if($orderCondtion){
-            $projects = Project::orderBy($orderCondtion)->paginate($numOfElementsToView);
+        $orderCondition = $request->orderCondition ?? '';
+        if($orderCondition){
+            $projects = Project::orderBy($orderCondition)->paginate($numOfElementsToView);
         }
         else{
             $projects = Project::paginate($numOfElementsToView);
@@ -192,9 +192,9 @@ class ProjectController extends Controller
     public function trashed(Request $request)
     {
         $numOfElementsToView = 5;
-        $orderCondtion = $request->orderCondtion ?? '';
-        if($orderCondtion){
-            $trashedProjects = Project::onlyTrashed()->orderBy($orderCondtion)->paginate($numOfElementsToView);
+        $orderCondition = $request->orderCondition ?? '';
+        if($orderCondition){
+            $trashedProjects = Project::onlyTrashed()->orderBy($orderCondition)->paginate($numOfElementsToView);
         }
         else{
             $trashedProjects = Project::onlyTrashed()->paginate($numOfElementsToView);

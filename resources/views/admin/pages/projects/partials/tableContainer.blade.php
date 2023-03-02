@@ -8,13 +8,36 @@
 --}}
 
 @php
-$tableElements=[
-    'id',
-    'title',
-    'description',
-    'img_path',
-    'type_name',
-    'technology',
+$columns=[
+    [
+      "name" => "id",
+      "sortable" => true,
+    ],
+
+    [
+      "name" => "title",
+      "sortable" => true,
+    ],
+
+    [
+      "name" => "description",
+      "sortable" => true,
+    ],
+
+    [
+      "name" => "img_path",
+      "sortable" => true,
+    ],
+
+    [
+      "name" => "type_name",
+      "sortable" => false,
+    ],
+
+    [
+      "name" => "technology",
+      "sortable" => false,
+    ],
 ];    
 @endphp
 
@@ -52,8 +75,11 @@ $tableElements=[
     <table class="table table-hover">
       <thead class="table-dark">
         <tr>
-          @foreach ($tableElements as $tableEl)
-          <th scope="col"><a class="text-decoration-none" href="{{route(($projectsRoute === 'index') ? "admin.pages.projects.index" : "admin.pages.projects.trashed", "orderCondtion=$tableEl")}}">{{ucfirst($tableEl)}}</a></th>
+          @foreach ($columns as $col)
+          @php
+              $colName = $col["name"];
+          @endphp
+          <th scope="col"><a class="text-decoration-none" href="{{route(($projectsRoute === 'index') ? "admin.pages.projects.index" : "admin.pages.projects.trashed", "orderCondition=$colName")}}">{{$colName}}</a></th>
           @endforeach
           <th scope="col">#Actions</th>
         </tr>
