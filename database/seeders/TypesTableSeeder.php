@@ -17,7 +17,7 @@ class TypesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $types = config('helpers.types');
+        $types = config('db.types');
         
         foreach($types as $type){
             $newType = new Type();

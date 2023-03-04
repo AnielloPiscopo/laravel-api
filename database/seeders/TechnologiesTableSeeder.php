@@ -16,7 +16,7 @@ class TechnologiesTableSeeder extends Seeder
      */
     public function run()
     {
-        $technologies = config('helpers.technologies');
+        $technologies = config('db.technologies');
 
         foreach($technologies as $technology){
             $newTechnology = new Technology();
