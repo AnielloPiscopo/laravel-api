@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\Admin\TechnologyController as AdminTechnologyController;
+use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +38,12 @@ Route::middleware(['auth' , 'verified'])->name('admin.')->prefix('admin/')->grou
         Route::delete('projects/{project}/forceDelete' , [AdminProjectController::class , 'forceDelete'])->name('projects.forceDelete')->withTrashed();
         Route::delete('projects/forceDelete' , [AdminProjectController::class , 'emptyTrash'])->name('projects.emptyTrash');
         Route::resource('projects',AdminProjectController::class);
+        
+
+        Route::resource('types',AdminTypeController::class);
+        
+
+        Route::resource('technologies',AdminTechnologyController::class);
     });
 
 });
