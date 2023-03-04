@@ -77,9 +77,10 @@ $columns=[
         <tr>
           @foreach ($columns as $col)
           @php
-              $colName = $col["name"];
+              $colName = $col['name'];
+              $colSortable = $col['sortable']
           @endphp
-          <th scope="col"><a class="text-decoration-none" href="{{route(($projectsRoute === 'index') ? "admin.pages.projects.index" : "admin.pages.projects.trashed", "orderCondition=$colName")}}">{{$colName}}</a></th>
+          <th scope="col"><a class="text-decoration-none" href="{{route(($projectsRoute === 'index') ? "admin.pages.projects.index" : "admin.pages.projects.trashed", ($colSortable) ? "orderCondition=$colName" : ''  )}}">{{$col['name']}}</a></th>
           @endforeach
           <th scope="col">#Actions</th>
         </tr>
