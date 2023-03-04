@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Project extends Model
+class Project extends BaseModel
 {
     use HasFactory;
     use SoftDeletes;
@@ -28,18 +28,5 @@ class Project extends Model
 
     public function technologies(){
         return $this->belongsToMany(Technology::class);
-    }
-
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
-
-    public function isImageAUrl(){
-        return filter_var($this->img_path, FILTER_VALIDATE_URL);
-    }
-
-    public function fromStringToBoolean($str){
-        return $str ? 'true' : 'false';
     }
 }
