@@ -7,6 +7,14 @@
 |
 --}}
 
+@php
+    $navLinks = [
+        'projects',
+        'types',
+        'technologies',
+    ]
+@endphp
+
 
 <header class="mb-5">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -30,9 +38,11 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     @if (route('admin.dashboard'))
+                    @foreach ($navLinks as $navLink)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route("admin.pages.projects.index") }}">{{ __('Projects') }}</a>
+                       <a class="nav-link @if(str_contains(Route::currentRouteName(),$navLink)) active @endif" href="{{route("admin.pages.$navLink.index") }}">{{ __(ucfirst($navLink)) }}</a>
                     </li>
+                    @endforeach
                     @endif
                 </ul>
 
