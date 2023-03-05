@@ -32,7 +32,7 @@
 
     <div class="d-flex align-items-center">
         <h4>Type:</h4>
-        <span>{{$project->type->name}}</span>
+        <span class="badge" style="color:{{$project->type->color}};background-color:{{$project->type->bg_color}}">{{$project->type->name}}</span>
     </div>
 
     <div class="d-flex align-items-center">

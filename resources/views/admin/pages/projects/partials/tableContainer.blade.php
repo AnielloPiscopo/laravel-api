@@ -93,7 +93,7 @@ $columns=[
               <td>{{$project->title}}</td>
               <td>{{$project->description}}</td>
               <td>{{$project->img_path}}</td>
-              <td>{{$project->type->name}}</td>
+              <td><span class="badge rounded rounded-pill" style="color:{{$project->type->color}};background-color:{{$project->type->bg_color}}">{{$project->type->name}}</span></td>
               <td>
                 @forelse ($project->technologies as $technology)
                 <div>{{$technology->name}}</div>
