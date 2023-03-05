@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
-use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\Admin\TechnologyController as AdminTechnologyController;
-use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.home');
-})->name('guest.home');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -30,22 +23,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth' , 'verified'])->name('admin.')->prefix('admin/')->group(function(){
     Route::get('dashboard' , [DashboardController::class , 'index'])->name('dashboard');
-
-    Route::prefix('')->name('pages.')->group(function () {
-        Route::get('projects/trashed' , [AdminProjectController::class , 'trashed'])->name('projects.trashed');
-        Route::get('projects/{project}/restore' , [AdminProjectController::class , 'restore'])->name('projects.restore')->withTrashed();
-        Route::get('projects/restore' , [AdminProjectController::class , 'restoreAll'])->name('projects.restoreAll');
-        Route::delete('projects/{project}/forceDelete' , [AdminProjectController::class , 'forceDelete'])->name('projects.forceDelete')->withTrashed();
-        Route::delete('projects/forceDelete' , [AdminProjectController::class , 'emptyTrash'])->name('projects.emptyTrash');
-        Route::resource('projects',AdminProjectController::class);
-        
-
-        Route::resource('types',AdminTypeController::class);
-        
-
-        Route::resource('technologies',AdminTechnologyController::class);
+    
+    Route::prefix('')->name('pages.')->group(function () {  
+        require __DIR__.'/models/projects.php';
+        require __DIR__.'/models/others.php';
     });
-
 });
 
+require __DIR__.'/guest.php';
 require __DIR__.'/auth.php';
