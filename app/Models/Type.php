@@ -9,7 +9,7 @@ class Type extends BaseModel
 {
     use HasFactory;
 
-    protected $fillable = array('name' , 'slug' , 'vanilla');
+    protected $fillable = array('name' , 'slug');
 
     public function projects(){
         return $this->hasMany(Project::class);
