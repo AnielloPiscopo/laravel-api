@@ -25,8 +25,8 @@ Route::middleware(['auth' , 'verified'])->name('admin.')->prefix('admin/')->grou
     Route::get('dashboard' , [DashboardController::class , 'index'])->name('dashboard');
     
     Route::prefix('')->name('pages.')->group(function () {  
-        require __DIR__.'/models/projects.php';
-        require __DIR__.'/models/others.php';
+        require __DIR__.'/admin/projects.php';
+        require __DIR__.'/admin/others.php';
     });
 });
 

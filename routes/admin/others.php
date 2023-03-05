@@ -13,5 +13,5 @@ use App\Http\Controllers\Admin\TypeController as TypeController;
 |
 */
 
-Route::resource('types',TypeController::class);
+Route::resource('types',TypeController::class , ['except' => ['create' , 'store' , 'destroy']]);
 Route::resource('technologies',TechnologyController::class);
