@@ -23,6 +23,8 @@ class TypesTableSeeder extends Seeder
             $newType = new Type();
             $newType->name = $type;
             $newType->slug = Str::slug($newType->name);
+            $newType->color = $faker->unique()->hexColor();
+            $newType->bg_color = $faker->unique()->hexColor();
             $newType->save();
         }
     }
