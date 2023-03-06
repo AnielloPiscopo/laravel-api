@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\Api\ProjectController as ApiProjectController;
+use App\Http\Controllers\Api\ProjectController as ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('projects',ApiProjectController::class , ['only' => ['index' , 'show']]);
+Route::middleware('auth:api')->group(function(){
+    Route::apiResource('projects',ProjectController::class , ['only' => ['index' , 'show']]);
+});
