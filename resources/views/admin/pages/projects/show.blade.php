@@ -20,8 +20,14 @@
     ]
 @endphp
 
-<article class="my_card">
-    <div class="card-image mb-4">
+<article class="card text-center">
+    <div class="card-header">
+            <span class="badge" style="color:{{$project->type->color}};background-color:{{$project->type->bg_color}}">{{$project->type->name}}</span>
+            @foreach ($project->technologies as $technology)
+                <span class="badge" style="color:{{$technology->color}};background-color:{{$technology->bg_color}}">{{$technology->name}}</span>
+            @endforeach
+    </div>
+    <div class="card-image my-4">
         @if ( $project->isImageAUrl())
         <img src="{{ $project->img_path }}"
         @else
@@ -29,26 +35,12 @@
         @endif
         alt="{{ $project->title }} image" class="img-fluid">
     </div>
-
-    <div class="d-flex align-items-center">
-        <h4>Type:</h4>
-        <span class="badge" style="color:{{$project->type->color}};background-color:{{$project->type->bg_color}}">{{$project->type->name}}</span>
+    <div class="card-body">
+        <h5 class="card-title">{{ $project->title }}</h5>
+        <p class="card-text">
+            {{$project->description}}
+        </p>
     </div>
-
-    <div class="d-flex align-items-center">
-        <h4>Categories:</h4>
-        <div>
-            @foreach($project->technologies as $technology)
-            <span>{{$technology->name}}</span>
-            @endforeach
-        </div>
-    </div>
-
-    <ul>
-        @foreach ($listElements as $listEl)
-            <li>{{$listEl . ':' . $project->$listEl}}</li> 
-        @endforeach
-    </ul>
 
     <div class="my_btn-container d-flex justify-content-center">
         <a href="{{route('admin.pages.projects.edit' , $project->slug)}}" class="my_btn btn btn-dark">Edit</a>

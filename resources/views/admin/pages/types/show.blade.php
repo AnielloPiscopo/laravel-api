@@ -22,7 +22,6 @@
                 @foreach ($project->technologies as $technology)
                     <span class="badge" style="color:{{$technology->color}};background-color:{{$technology->bg_color}}">{{$technology->name}}</span>
                 @endforeach
-            </div>
         </div>
         <div class="card-image my-4">
             @if ( $project->isImageAUrl())
