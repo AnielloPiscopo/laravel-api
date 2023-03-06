@@ -247,6 +247,10 @@ class ProjectController extends Controller
      */
     public function forceDelete(Project $project)
     {
+        if(!$project->isImageAUrl()){
+            Storage::delete($project->img_path);
+        }
+        $project->technologies()->sync([]);
         $project->forceDelete();
 
         $successMessage = "
