@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Api\ProjectController as ProjectController;
+use App\Http\Controllers\Api\TechnologyController as TechnologyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->group(function(){
     Route::apiResource('projects',ProjectController::class , ['only' => ['index' , 'show']]);
+    Route::apiResource('technologies',TechnologyController::class , ['only' => ['index']]);
 });
