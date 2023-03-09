@@ -21,7 +21,7 @@ class TechnologiesTableSeeder extends Seeder
 
         foreach($technologies as $technology){
             $newTechnology = new Technology();
-            $newTechnology->name = $technology;
+            $newTechnology->name = $technology['name'];
             $newTechnology->slug = Str::slug($newTechnology->name);
             $newTechnology->color = $faker->unique()->hexColor();
             $newTechnology->bg_color = $faker->unique()->hexColor();
