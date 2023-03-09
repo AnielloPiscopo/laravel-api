@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class TechnologyController extends Controller
 {
     public function index(){
-        $technologies = Technology::select('name' , 'rate')->get();
+        $technologies = Technology::select('name')->get();
         
         return response()->json([
             'success' => true,
