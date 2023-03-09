@@ -9,7 +9,7 @@ class Technology extends BaseModel
 {
     use HasFactory;
 
-    protected $fillable = array('name' , 'slug' , 'color' , 'bg-color');
+    protected $fillable = array('name' , 'slug' , 'rate' ,'color' , 'bg-color');
 
     public function projects(){
         return $this->belongsToMany(Project::class);
