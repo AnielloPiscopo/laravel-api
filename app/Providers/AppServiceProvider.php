@@ -26,5 +26,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
         Paginator::useBootstrapFour();
+
+        $migrationsPath = database_path('migrations');
+        $directories    = glob($migrationsPath.'/*', GLOB_ONLYDIR);
+        $paths          = array_merge([$migrationsPath], $directories);
+
+        $this->loadMigrationsFrom($paths);
     }
 }
