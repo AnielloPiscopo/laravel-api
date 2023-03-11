@@ -6,4 +6,5 @@ return [
     'Visual Studio Code',
     'Notepad',
     'Github',
+    'Notion',
 ];
