@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\GeneralSkill;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
             ProjectsTableSeeder::class,
             ProjectTechnologySeeder::class,
+            GeneralSkillsTableSeeder::class,
         ]);
     }
 }
