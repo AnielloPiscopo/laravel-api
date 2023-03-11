@@ -17,7 +17,8 @@ class RoleUserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $users = User::all();
+        $personalAccount = User::all()->first();
+        $users = User::all()->except(1);
         $roles = Role::all()->pluck('id');
 
         foreach($users as $user){
