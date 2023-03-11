@@ -23,7 +23,6 @@ class TechnologiesTableSeeder extends Seeder
             $newTechnology = new Technology();
             $newTechnology->name = $technology['name'];
             $newTechnology->slug = Str::slug($newTechnology->name);
-            $newTechnology->rate = $technology['rate'];
             $newTechnology->color = $faker->unique()->hexColor();
             $newTechnology->bg_color = $faker->unique()->hexColor();
             $newTechnology->save();
