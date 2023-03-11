@@ -19,8 +19,7 @@ class RolesTableSeeder extends Seeder
 
         foreach($roles as $role){
             $newRole = new Role();
-            $newRole->level = $role['level'];
-            $newRole->name = $role['name'];
+            $newRole->name = $role;
             $newRole->save();
         }
     }
