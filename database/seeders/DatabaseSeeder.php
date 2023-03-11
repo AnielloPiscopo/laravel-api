@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             ProjectsTableSeeder::class,
             ProjectTechnologySeeder::class,
             GeneralSkillsTableSeeder::class,
+            LanguagesTableSeeder::class,
+            ProgrammsTableSeeder::class,
         ]);
     }
 }
