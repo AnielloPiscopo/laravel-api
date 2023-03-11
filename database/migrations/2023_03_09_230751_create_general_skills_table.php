@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name','255');
             $table->string('slug','255');
-            $table->string('color','255');
-            $table->string('bg_color','255');
             $table->timestamps();
         });
     }
