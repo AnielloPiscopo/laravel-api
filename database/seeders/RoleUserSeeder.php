@@ -21,6 +21,7 @@ class RoleUserSeeder extends Seeder
         $users = User::all()->except(1);
         $roles = Role::all()->pluck('id');
 
+        $personalAccount->roles()->attach(1);
         foreach($users as $user){
             $user->roles()->attach($faker->randomElements($roles,2));
         }
