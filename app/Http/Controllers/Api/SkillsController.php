@@ -18,7 +18,7 @@ class SkillsController extends Controller
         $generalSkills = GeneralSkill::select('name')->get();
 
         $skills = [];
-        array_push($skills , ['name' => 'technologies', 'content' => $technologies] , ['name' => 'programms', 'content' => $programms] , ['name' => 'languages', 'content' => $languages] , ['name' => 'generalSkills', 'content' => $generalSkills]);
+        array_push($skills , ['name' => 'Linguaggi di programmazione', 'content' => $technologies] , ['name' => 'Programmi', 'content' => $programms] , ['name' => 'Lingue', 'content' => $languages] , ['name' => 'Soft Skills', 'content' => $generalSkills]);
         
         return response()->json([
             'success' => true,
